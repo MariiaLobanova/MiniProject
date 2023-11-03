@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 //Implement Student and Course Classes with CRUD operations
@@ -69,6 +71,35 @@ class StudentManagment{
         }
         System.out.println("Student is not found");
     }
+    public void sortStudentByName(){                // sorting by name and display
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student student1, Student student2) {
+                return student1.getName().compareTo(student2.getName());
+            }
+        });
+        System.out.println("List of students sorted by name: ");
+        for(Student student: students){
+            System.out.println(student);
+        }
+    }
+
+
+
+    public void sortStudentsByID() {                     // Sorting by id and display
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student student1, Student student2) {
+                return Integer.compare(student1.getId(), student2.getId());
+            }
+        });
+        System.out.println("List of students sorted by id: ");
+        for(Student student: students){
+            System.out.println(student);
+        }
+
+    }
+
 
     public static void main(String[] args) {
         StudentManagment studentManagment = new StudentManagment();
@@ -82,7 +113,10 @@ class StudentManagment{
         studentManagment.searchStudent("Anton");
         System.out.println("-----------");
 
-        studentManagment.displayStudents();
+        studentManagment.sortStudentByName();
+        System.out.println("-----------");
+
+        studentManagment.sortStudentsByID();
         System.out.println("-----------");
 
         studentManagment.deliteStudent(1);

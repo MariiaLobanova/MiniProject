@@ -1,6 +1,8 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Course {
@@ -66,6 +68,18 @@ class CourseManagment{
             }
             System.out.println("Courses is not found");
         }
+    public void sortCourseByName() {
+        Collections.sort(courses, new Comparator<Course>() {
+            @Override
+            public int compare(Course course1, Course course2) {
+                return course1.getNameCourse().compareTo(course2.getNameCourse());
+            }
+        });
+        System.out.println("List of courses sorted by name: ");
+        for (Course course : courses) {
+            System.out.println(course);
+        }
+    }
 
     public static void main(String[] args) {
         CourseManagment courseManagment = new CourseManagment();
@@ -76,9 +90,11 @@ class CourseManagment{
 
         courseManagment.displayCourses();
 
-        courseManagment.deliteCourse(22);
+        courseManagment.sortCourseByName();
 
-        courseManagment.displayCourses();
+        courseManagment.searchCourse("Biology");
+
+        courseManagment.deliteCourse(22);
 
     }
 }

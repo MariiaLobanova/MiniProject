@@ -1,0 +1,3 @@
+Anna, 13, Brandenburger str 12
+Anton, 2, Neuner Tor  1
+Maria, 18, Georg-Hermann-Alle, 36

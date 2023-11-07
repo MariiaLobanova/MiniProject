@@ -53,4 +53,8 @@ class HRSystemTest {
         hrSystem.addApplicant(applicant);
         assertEquals(0, hrSystem.applicants.size());
     }
+
+    @Test
+    void generateReports() {
+    }
 }

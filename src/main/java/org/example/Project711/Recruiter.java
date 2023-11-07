@@ -47,11 +47,11 @@ public class Recruiter {
         System.out.println("Recruter added new job in his worklist");
     }
 
-    public static void reviewApplicant(Applicant applicant, boolean isRelocationPreferred, boolean isWithinBudget) {
+    public static void reviewApplicant(Applicant applicant) {
         if (applicant.getStatus() == Status.PENDING) {
             applicant.setStatus(Status.REWIEWED);
         }else if(applicant.getStatus() == Status.REWIEWED) {
-            if (applicant.isRelocationPreferred() && isWithinBudget) {
+            if (applicant.isRelocationPreferred()) {
                 applicant.setStatus(Status.APPROVED);
             }else{
                 applicant.setStatus(Status.REJECTED);

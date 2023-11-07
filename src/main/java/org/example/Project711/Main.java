@@ -56,6 +56,13 @@ public class Main {
         Recruiter recruiter3 = new Recruiter("Elsa",hrSystem.jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
         Recruiter recruiter4 = new Recruiter("Kristof",hrSystem.jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
 
+
+        System.out.println("Before review application: " + applicant1);
+        Recruiter.reviewApplicant(applicant1);
+        System.out.println("After review application: " + applicant1);
+        System.out.println("************");
+
+
         hrSystem.addRecruiter(recruiter1);
         hrSystem.addRecruiter(recruiter2);
         hrSystem.addRecruiter(recruiter3);

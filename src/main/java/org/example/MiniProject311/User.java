@@ -1,4 +1,4 @@
-package org.example;
+package org.example.MiniProject311;
 
 
 public class User {

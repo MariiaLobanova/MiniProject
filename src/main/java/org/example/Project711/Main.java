@@ -9,15 +9,6 @@ public class Main {
         Applicant applicant3 = new Applicant(List.of("Company3"),"Humburg","Berlin",1200,Status.PENDING);
         Applicant applicant4 = new Applicant(List.of("Company4", "CompanyD"),"Berlin","Berlin",1300,Status.REWIEWED);
 
-        List<Applicant> applicants = new ArrayList<>();
-        applicants.add(applicant1);
-        applicants.add(applicant2);
-        applicants.add(applicant3);
-        applicants.add(applicant4);
-        for (Applicant applicant : applicants) {
-            System.out.println(applicant);
-        }
-
         System.out.println("--------------");
         applicant1.isRelocationPreferred();
         applicant2.isRelocationPreferred();
@@ -28,7 +19,9 @@ public class Main {
         hrSystem.addApplicant(applicant2);
         hrSystem.addApplicant(applicant3);
         hrSystem.addApplicant(applicant4);
-
+        for (Applicant applicant : hrSystem.applicants) {
+            System.out.println(applicant);
+        }
 
         JobPosition jobPosition1 = new JobPosition("java Developer","it", 900,1500,
                 List.of("tecnical skill","teamworking"),"Berlin", "IT", "Developer");
@@ -39,14 +32,6 @@ public class Main {
         JobPosition jobPosition4 = new JobPosition("Data Scientist", "Data Science", 2500, 3000,
                 List.of("Data analysis", "machine learning"), "San Francisco", "Data Science", "Data Scientist");
 
-        List<JobPosition> jobPositions = new ArrayList<>();
-        jobPositions.add(jobPosition1);
-        jobPositions.add(jobPosition2);
-        jobPositions.add(jobPosition3);
-        jobPositions.add(jobPosition4);
-        for (JobPosition jobPosition : jobPositions) {
-            System.out.println(jobPosition);
-        }
         System.out.println("--------------");
         jobPosition1.isWithinBudget(applicant1.getExpectedSalary());
         jobPosition3.isWithinBudget(applicant4.getExpectedSalary());
@@ -56,25 +41,26 @@ public class Main {
         hrSystem.addJobPosition(jobPosition2);
         hrSystem.addJobPosition(jobPosition3);
         hrSystem.addJobPosition(jobPosition4);
+        for (JobPosition jobPosition : hrSystem.jobPositions) {
+            System.out.println(jobPosition);
+        }
 
         System.out.println("--------------");
 
         hrSystem.generateReports();
 
-
         System.out.println("--------------");
 
-        Recruiter recruiter1 = new Recruiter("Olaf",jobPositions, Set.of("Data Science"), Set.of("Software Engineer", "Marketing Manager", "Accountant"));
-        Recruiter recruiter2 = new Recruiter("Anna",jobPositions, Set.of("Data Science","Finance"), Set.of("Software Engineer"));
-        Recruiter recruiter3 = new Recruiter("Elsa",jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
-        Recruiter recruiter4 = new Recruiter("Kristof",jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
+        Recruiter recruiter1 = new Recruiter("Olaf",hrSystem.jobPositions, Set.of("Data Science"), Set.of("Software Engineer", "Marketing Manager", "Accountant"));
+        Recruiter recruiter2 = new Recruiter("Anna",hrSystem.jobPositions, Set.of("Data Science","Finance"), Set.of("Software Engineer"));
+        Recruiter recruiter3 = new Recruiter("Elsa",hrSystem.jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
+        Recruiter recruiter4 = new Recruiter("Kristof",hrSystem.jobPositions, Set.of("Finance"), Set.of("Marketing Manager", "Accountant"));
 
-        List<Recruiter> recruiters = new ArrayList<>(); // create a list of recruiters
-        recruiters.add(recruiter1);
-        recruiters.add(recruiter2);
-        recruiters.add(recruiter3);
-        recruiters.add(recruiter4);
-        for (Recruiter recruiter: recruiters){
+        hrSystem.addRecruiter(recruiter1);
+        hrSystem.addRecruiter(recruiter2);
+        hrSystem.addRecruiter(recruiter3);
+        hrSystem.addRecruiter(recruiter4);
+        for (Recruiter recruiter: hrSystem.recruiters){
             System.out.println(recruiter);
         }
         System.out.println("--------------");
@@ -84,12 +70,6 @@ public class Main {
 
         recruiter1.isSpecializedFor(jobPosition4);// call method and ask is recruiter work with this industry?
         System.out.println("--------------");
-
-
-
-
-
-
 
     }
 }

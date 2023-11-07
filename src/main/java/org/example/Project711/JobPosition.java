@@ -102,10 +102,10 @@ public class JobPosition {
     }
 
     public boolean isWithinBudget(double expectedSalary){ // checking salaryRange
-        if(expectedSalary<=offeredSalaryRangeStart) {
-            System.out.println("Applicant is satifyed with salary!");
+        if(expectedSalary>=offeredSalaryRangeStart&&expectedSalary<=offeredSalaryRangeEnd) {
+            System.out.println("Applicant is satified with salary!");
             return true;
-        }else{
+        }else {
             System.out.println("salary doesn't meet with the applicant's expectations");
             return false;
         }
